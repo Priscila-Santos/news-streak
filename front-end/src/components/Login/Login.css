@@ -1,0 +1,96 @@
+@import '../../variables.css';
+
+.login-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.login-modal {
+    background: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    position: relative;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: var(--accent-color);
+}
+
+.login-modal-header {
+    margin-bottom: 1rem;
+}
+
+.modal-logo {
+    width: 50px;
+    height: 50px;
+}
+
+.modal-title {
+    font-size: var(--heading-font-size);
+    font-family: var(--primary-font-family);
+    color: var(--primary-color);
+    margin: 0.5rem 0 1rem 0;
+}
+
+.login-modal-body input {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border: 1px solid var(--text-color);
+    border-radius: 4px;
+    font-family: var(--secondary-font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+}
+
+.login-modal-body button {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    background: var(--button-bg-color);
+    border: none;
+    color: var(--button-text-color);
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--secondary-font-family);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+}
+
+.login-modal-body button:hover {
+    background: var(--button-hover-bg-color);
+}
+
+.login-modal-body p {
+    margin: 1rem 0 0 0;
+    font-family: var(--secondary-font-family);
+    font-size: var(--font-size);
+    color: var(--text-color);
+}
+
+.login-modal-body a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.login-modal-body a:hover {
+    text-decoration: underline;
+}

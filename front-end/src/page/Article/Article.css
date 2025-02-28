@@ -1,0 +1,50 @@
+@import '../../variables.css';
+
+.articles-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--primary-font-family);
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  background-color: var(--background-color);
+}
+
+.article-container {
+  margin-bottom: 2rem;
+}
+
+.main-title {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.main-description {
+  flex: 1;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-right: 2rem;
+  line-height: var(--line-height);
+}
+
+.main-image { 
+  width: 25rem;
+  height: 25rem;
+  object-fit: cover;
+}
+
+.article-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}

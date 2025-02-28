@@ -1,0 +1,66 @@
+/* Importando variáveis */
+@import '../../variables.css';
+
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: var(--background-color);
+
+  font-family: var(--primary-font-family);
+}
+
+.newsletter-button {
+ 
+  background-color: var(--background-color);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.newsletter-icon {
+  width: 7rem;
+  height: 7rem;
+  margin-bottom: 1rem;
+}
+
+.newsletter-title {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.newsletter-subtitle {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.newsletter-input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 0.25rem;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+.newsletter-button {
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.newsletter-button:hover {
+  background-color: var(--button-hover-bg-color);
+}
