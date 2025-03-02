@@ -1,17 +1,49 @@
 # Estrtura de Pastas
 `
-    src/
-  ├── components/
-  │   ├── Navbar.tsx
-  │   ├── Navbar.css
-  │   ├── ArticleCard.tsx
-  │   ├── ArticleCard.css
-  │   ├── Footer.tsx
-  │   ├── Footer.css
-  ├── HomePage.tsx
-  ├── HomePage.css
-  ├── variables.css
-  └── index.tsx (ou main.tsx)
+news-streak/
+│
+├── front-end/
+│   ├── src/
+│   │   ├── assets/
+│   │   │   ├── img/
+│   │   │   │   ├── logo.png
+│   │   │   │   └── logoNavbar.png
+│   │   ├── components/
+│   │   │   ├── Article/
+│   │   │   │   ├── Article.tsx
+│   │   │   │   └── Article.css
+│   │   │   ├── ArticleCard.tsx
+│   │   │   ├── ArticleCard.css
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Footer.css
+│   │   │   ├── LoginModal/
+│   │   │   │   ├── LoginModal.tsx
+│   │   │   │   └── LoginModal.css
+│   │   │   ├── Navbar.tsx
+│   │   │   ├── Navbar.css
+│   │   ├── HomePage.tsx
+│   │   ├── HomePage.css
+│   │   ├── variables.css
+│   │   └── main.tsx
+│   ├── index.html
+│   ├── package.json
+│   └── tsconfig.json
+│
+└── back-end/
+    ├── config/
+    │   ├── db.js
+    │   ├── auth.js
+    ├── controllers/
+    │   ├── authController.js
+    ├── models/
+    │   ├── user.js
+    ├── routes/
+    │   ├── authRoutes.js
+    ├── app.js
+    ├── server.js
+    ├── package.json
+    └── .env
+
 
 `
 

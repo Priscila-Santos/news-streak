@@ -2,6 +2,13 @@ import React from 'react';
 import './Footer.css';
 import logoFooter from '../../assets/img/logo.png'
 
+import logoX from '../../assets/icons/icons8-twitter-50.png';
+import logoInstagram from '../../assets/icons/icons8-instagram-50.png';
+import logoLinkedIn from '../../assets/icons/icons8-linkedin-50.png';
+import logoTikTok from '../../assets/icons/icons8-tiktok-50.png';
+import logoRSS from '../../assets/icons/icons8-rss-50.png';
+
+
 const Footer: React.FC = () => {
   return (
     <footer className="footer">
@@ -34,11 +41,11 @@ const Footer: React.FC = () => {
           <button type="submit" className="subscription-button">inscreva-se</button>
         </form>
         <div className="social-media">
-          <a href="https://twitter.com"><img src="/path/to/twitter-icon.png" alt="Twitter" className="social-icon" /></a>
-          <a href="https://linkedin.com"><img src="/path/to/linkedin-icon.png" alt="LinkedIn" className="social-icon" /></a>
-          <a href="https://instagram.com"><img src="/path/to/instagram-icon.png" alt="Instagram" className="social-icon" /></a>
-          <a href="https://tiktok.com"><img src="/path/to/tiktok-icon.png" alt="TikTok" className="social-icon" /></a>
-          <a href="/rss-feed-url"><img src="/path/to/rss-icon.png" alt="RSS" className="social-icon" /></a>
+          <a href="https://twitter.com"><img src={logoX} alt="Twitter" className="social-icon" /></a>
+          <a href="https://linkedin.com"><img src={logoLinkedIn} alt="LinkedIn" className="social-icon" /></a>
+          <a href="https://instagram.com"><img src={logoInstagram} alt="Instagram" className="social-icon" /></a>
+          <a href="https://tiktok.com"><img src={logoTikTok} alt="TikTok" className="social-icon" /></a>
+          <a href="/rss-feed-url"><img src={logoRSS} alt="RSS" className="social-icon" /></a>
         </div>
       </div>
       <div className="footer-bottom">
