@@ -19,11 +19,20 @@ interface User {
 export const createUser = async (name: string, email: string, password: string): Promise<User> => {
   const hashedPassword = await bcrypt.hash(password, 10);
   const result = await pool.query<User>(
-    'INSERT INTO users (name, email, password, streak) VALUES ($1, $2, $3, $4) RETURNING *',
-    [name, email, hashedPassword, 0]
+    'INSERT INTO users (name, email, password, streak, last_read_date) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+    [name, email, hashedPassword, 0, new Date()]
   );
   return result.rows[0];
 };
+
+// export const createUser = async (name: string, email: string, password: string): Promise<User> => {
+//   const hashedPassword = await bcrypt.hash(password, 10);
+//   const result = await pool.query<User>(
+//     'INSERT INTO users (name, email, password, streak) VALUES ($1, $2, $3, $4) RETURNING *',
+//     [name, email, hashedPassword, 0]
+//   );
+//   return result.rows[0];
+// };
 
 const updatePasswords = async () => {
   const users = await pool.query('SELECT * FROM users');

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Streak from '../../components/Streak/Streak';
 import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
+import './Dashboard.css';
 
 const Dashboard: React.FC = () => {
     const [data, setData] = useState<string>('');
@@ -31,12 +33,15 @@ const Dashboard: React.FC = () => {
     }, []);
 
     return (
-        <div>
+        <>
             <Navbar />
-            <h1>Dashboard</h1>
-            <p>{data}</p>
-            <Streak streakDays={streakDays} daysOfWeek={daysOfWeek} />
-        </div>
+            <div className="dashboard-container">
+                <h1 className='dashboard-title'>Dashboard</h1>
+                <p>{data}</p>
+                <Streak streakDays={streakDays} daysOfWeek={daysOfWeek} />
+            </div>
+            <Footer />
+        </>
     );
 }
 

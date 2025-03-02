@@ -2,10 +2,10 @@
 
 .streak-container {
   text-align: center;
-  padding: 20px;
-  border: 1px solid var(--accent-color);
-  border-radius: 10px;
-  width: 300px;
+  padding: 1rem;
+  border: 0.0625rem solid var(--accent-color);
+  border-radius: .625rem;
+  width: 18rem;
   margin: 0 auto;
   background-color: var(--background-color);
   color: var(--text-color);
@@ -15,27 +15,27 @@
 .streak-indicator {
   position: relative;
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .streak-circle {
-  width: 100px;
-  height: 100px;
+  width: 6.5rem;
+  height: 6.5rem;
   border-radius: 50%;
-  border: 10px solid var(--accent-color);
+  border: .625rem solid var(--accent-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 1.5rem;
   color: var(--accent-color);
 }
 
 .flame-icon {
   position: absolute;
-  bottom: -10px;
-  right: -10px;
-  width: 30px;
-  height: 30px;
+  bottom: -.625rem;
+  right: -.625rem;
+  width: 1.875rem;
+  height: 1.875rem;
   background-color: var(--accent-color);
   border-radius: 50%;
   display: flex;
@@ -51,8 +51,8 @@
 }
 
 .day-circle {
-  width: 30px;
-  height: 30px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   border: 2px solid var(--accent-color);
   display: flex;
@@ -63,7 +63,8 @@
 }
 
 .continue-button {
-  padding: 10px 20px;
+  margin-top: 1rem;
+  padding: .625rem 1.25rem;
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
   border: none;
