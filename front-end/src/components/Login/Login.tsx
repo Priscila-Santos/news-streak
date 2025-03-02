@@ -28,7 +28,7 @@
 //             }
 //         } catch (error: unknown) {
 //             if (axios.isAxiosError(error)) {
-//                 setError(error.response?.data?.message || 'An error occurred. Please try again.');
+//                 setError(error.response?.data?.message || 'An error occurred. Please try again later.');
 //             } else {
 //                 setError('An error occurred. Please try again later.');
 //             }
@@ -91,6 +91,7 @@ const Login: React.FC<LoginProps> = ({ onClose, onLoginSuccess }) => {
 
             if (response.data.success && response.data.token) {
                 localStorage.setItem('token', response.data.token);
+                console.log('Token salvo no localStorage:', response.data.token); // Adicione este log
                 onLoginSuccess();
             } else {
                 setError(response.data.message || 'Invalid email or password');

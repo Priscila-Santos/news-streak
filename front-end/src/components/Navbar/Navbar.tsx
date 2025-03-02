@@ -21,6 +21,7 @@ const Navbar: React.FC = () => {
     const handleLogoutClick = () => {
         setLoggedIn(false);
         localStorage.removeItem('token');
+        window.location.href = '/';
     }
 
     const handleLoginSuccess = () => {
@@ -56,7 +57,8 @@ const Navbar: React.FC = () => {
 export default Navbar;
 
 
-// import React, { useState } from "react";
+
+// import React, { useState, useEffect } from "react";
 // import './Navbar.css';
 // import logoNavbar from '../../assets/img/logo.png';
 // import LoginModal from '../Login/Login';
@@ -65,12 +67,20 @@ export default Navbar;
 //     const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 //     const [isLoggedIn, setLoggedIn] = useState(false);
 
+//     useEffect(() => {
+//         const token = localStorage.getItem('token');
+//         if (token) {
+//             setLoggedIn(true);
+//         }
+//     }, []);
+
 //     const handleLoginClick = () => {
 //         setLoginModalOpen(true);
 //     }
 
 //     const handleLogoutClick = () => {
 //         setLoggedIn(false);
+//         localStorage.removeItem('token');
 //     }
 
 //     const handleLoginSuccess = () => {
@@ -87,12 +97,14 @@ export default Navbar;
 
 //             <div className="navbar-right">
 //                 {isLoggedIn ? (
-//                     <a href="/" className="navbar-link" onClick={handleLogoutClick}>Logout</a>
+//                     <>
+//                         <a href="/dashboard" className="navbar-link">Dashboard</a>
+//                         <a href="/" className="navbar-link" onClick={handleLogoutClick}>Logout</a>
+//                     </>
 //                 ) : (
 //                     <a href="#" className="navbar-link" onClick={handleLoginClick}>Login</a>
 //                 )}
 //                 <a href="/subscribe" className="navbar-link">Subscribe</a>
-//                 <a href="/dashboard" className="navbar-link">Dashboard</a>
 //                 <a href="/settings" className="navbar-link">Settings</a>
 //             </div>
 
