@@ -1,9 +1,16 @@
-import express from 'express';
+import { Router } from 'express';
+import { getDashboardData, recordArticleRead } from '../controllers/dashboardController';
 import { authenticateToken } from '../middleware/authMiddleware';
-import { getDashboardData } from '../controllers/dashboardController';
 
-const router = express.Router();
+const router = Router();
 
-router.get('/dashboard', authenticateToken, getDashboardData);
+
+// Rota para buscar dados do dashboard
+router.get('/dashboard', authenticateToken, getDashboardData, );
+
+// Rota para registrar a leitura de um artigo
+
+router.post('/record-article-read', authenticateToken, recordArticleRead);
+
 
 export default router;

@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
 const dashboardRoutes_1 = __importDefault(require("./routes/dashboardRoutes"));
+const articleRoutes_1 = __importDefault(require("./routes/articleRoutes"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -20,29 +21,7 @@ app.use((0, cors_1.default)({
 app.use(express_1.default.json());
 app.use('/api', authRoutes_1.default);
 app.use('/api', dashboardRoutes_1.default);
+app.use('/api', articleRoutes_1.default);
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
-// import express from 'express';
-// import cors from 'cors';
-// import authRoutes from './routes/authRoutes';
-// import dotenv from 'dotenv';
-// dotenv.config();
-// const app = express();
-// const PORT = process.env.PORT || 3000;
-// // Configurar CORS para permitir requisições do front-end
-// app.use(cors({
-//   origin: 'http://localhost:5173',
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   allowedHeaders: ['Content-Type', 'Authorization']
-// }));
-// app.use(express.json());
-// // Middleware para registrar todas as requisições
-// app.use((req, res, next) => {
-//   console.log(`Received ${req.method} request for ${req.url}`);
-//   next();
-// });
-// app.use('/api', authRoutes);
-// app.listen(PORT, () => {
-//   console.log(`Server running on http://localhost:${PORT}`);
-// });

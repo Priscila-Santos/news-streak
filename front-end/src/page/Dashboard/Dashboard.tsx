@@ -6,31 +6,36 @@ import Footer from '../../components/Footer/Footer';
 import './Dashboard.css';
 
 const Dashboard: React.FC = () => {
+    console.log("Chamando fetchData...");
     const [data, setData] = useState<string>('');
     const [streakDays, setStreakDays] = useState<number>(0);
     const [daysOfWeek, setDaysOfWeek] = useState<string[]>(['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab']);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const token = localStorage.getItem('token');
-            if (token) {
-                try {
-                    const response = await axios.get('http://localhost:3000/api/dashboard', {
-                        headers: {
-                            'Authorization': `Bearer ${token}`
-                        }
-                    });
-                    setData(response.data.message);
-                    // Supondo que a resposta contenha os dados dos dias de sequência
-                    setStreakDays(response.data.streakDays);
-                    setDaysOfWeek(response.data.daysOfWeek);
-                } catch (error) {
-                    console.error('Error fetching dashboard data:', error);
-                }
+    const fetchData = async () => {
+        console.log("🚀 fetchData foi chamado!");
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const response = await axios.get('http://localhost:3000/api/dashboard', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+    
+                console.log("✅ Resposta do backend:", response.data);
+    
+                setData(response.data.message);
+                setStreakDays(response.data.stats?.currentStreak || 0);
+                setDaysOfWeek(response.data.stats?.daysOfWeek || ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab']);
+            } catch (error) {
+                console.error('❌ Erro ao buscar dados do dashboard:', error);
             }
-        };
+        }
+    };
+    
+
+    useEffect(() => {
+        console.log("🔄 useEffect foi chamado!");
         fetchData();
-    }, []);
+    }, []); 
 
     return (
         <>
