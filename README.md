@@ -203,7 +203,7 @@ news-streak/
   ├── index.ts
   ├── package.json
   └── .env
-```
+## Ignorar o arquivo .env
 
 ## Contribuições
 
