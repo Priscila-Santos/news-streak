@@ -21,25 +21,29 @@ const updateStreak = async (userId: number) => {
 
 export const recordArticleRead = async (req: AuthenticatedRequest, res: Response): Promise<void> => {
   try {
-    console.log("Request body:", req.body);  // Log do corpo da requisição
-    console.log("Authenticated user:", req.user);  // Log do usuário autenticado
+      console.log("Request body:", req.body);
+      console.log("Authenticated user:", req.user);
+      
+      const { articleId } = req.body;
+      const userId = req.user?.id;
 
-    const { articleId } = req.body;
-    const userId = req.user?.id;
+      if (!articleId || !userId) {
+          res.status(400).json({ message: "Missing articleId or userId" });
+          return;
+      }
 
-    if (!articleId || !userId) {
-      res.status(400).json({ message: "Missing articleId or userId" });
-      return;
-    }
+      await pool.query('INSERT INTO article_reads (user_id, article_id) VALUES ($1, $2)', [userId, articleId]);
 
-    await pool.query('INSERT INTO article_reads (user_id, article_id) VALUES ($1, $2)', [userId, articleId]);
+      // Atualiza o streak do usuário
+      await updateStreak(userId);
 
-    await updateStreak(userId);
+      // Incrementa o total de artigos lidos
+      await pool.query('UPDATE users SET total_articles_read = total_articles_read + 1 WHERE id = $1', [userId]);
 
-    res.status(200).json({ message: "Article read recorded successfully" });
+      res.status(200).json({ message: "Article read recorded successfully" });
   } catch (error) {
-    console.error("Error recording article read:", error);
-    res.status(500).json({ message: "Error recording article read" });
+      console.error("Error recording article read:", error);
+      res.status(500).json({ message: "Error recording article read" });
   }
 };
 
@@ -49,37 +53,35 @@ export const getArticlesReadCount = async (userId: number) => {
   return parseInt(result.rows[0].count, 10);
 };
 
+
 export const getDashboardData = async (req: AuthenticatedRequest, res: Response): Promise<void> => {
   try {
-    console.log("Authenticated user:", req.user);  // Log para verificar se o usuário está sendo reconhecido
+      console.log("Authenticated user:", req.user);
+      if (!req.user) {
+          res.status(401).json({ message: "User not authenticated" });
+          return;
+      }
 
-    if (!req.user) {
-      res.status(401).json({ message: "User not authenticated" });
-      return;
-    }
+      const result = await pool.query('SELECT name, streak, total_articles_read FROM users WHERE id = $1', [req.user.id]);
 
-    const result = await pool.query('SELECT name, streak FROM users WHERE id = $1', [req.user.id]);
-    
-    if (result.rows.length === 0) {
-      res.status(404).json({ message: "User not found" });
-      return;
-    }
+      if (result.rows.length === 0) {
+          res.status(404).json({ message: "User not found" });
+          return;
+      }
 
-    const user = result.rows[0];
-    const articlesReadCount = await getArticlesReadCount(req.user.id);
+      const user = result.rows[0];
 
-    const dashboardData = {
-      message: `Welcome to your dashboard, ${user.name}!`,
-      stats: {
-        articlesRead: articlesReadCount,
-        currentStreak: user.streak,
-        totalStreak: articlesReadCount,
-      },
-    };
+      const dashboardData = {
+          message: `Welcome to your dashboard, ${user.name}!`,
+          stats: {
+              articlesRead: user.total_articles_read,
+              currentStreak: user.streak
+          },
+      };
 
-    res.status(200).json(dashboardData);
+      res.status(200).json(dashboardData);
   } catch (error) {
-    console.error("Error fetching dashboard data:", error);
-    res.status(500).json({ message: "Error fetching dashboard data" });
+      console.error("Error fetching dashboard data:", error);
+      res.status(500).json({ message: "Error fetching dashboard data" });
   }
 };

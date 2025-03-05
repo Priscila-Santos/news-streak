@@ -120,8 +120,8 @@ Os testes e ajustes finais levaram Y dias, focando em otimização e correção 
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/the-news-gamification.git
-   cd the-news-gamification
+   git clone https://github.com/seu-usuario/news-streak.git
+   cd news-streak
    ```
 
 2. Instale as dependências:
@@ -151,6 +151,8 @@ Os testes e ajustes finais levaram Y dias, focando em otimização e correção 
     ```
 
 7. Acesse o back-end em `http://localhost:3000` e a API em `http://localhost:3000/api`.
+8. Acesse o front-end em `http://localhost:5173`.
+
 
 ---
 

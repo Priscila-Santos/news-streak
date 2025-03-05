@@ -1,0 +1,66 @@
+@import '../../variables.css';
+
+.articles-read-container {
+  text-align: center;
+  padding: 1rem;
+  border: 0.0625rem solid var(--accent-color);
+  border-radius: 0.625rem;
+  width: 18rem;
+  margin: 0 auto;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--primary-font-family);
+}
+
+.articles-read-conatiner-img {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+
+}
+
+.articles-read-img {
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 50%;
+}
+
+.articles-read-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.articles-read-text-top {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.articles-read-text-footer {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--secondary-text-color);
+  margin-bottom: 2rem;
+}
+
+.articles-read-btn {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.articles-read-btn-share,
+.articles-read-btn-continue {
+  padding: 0.625rem 1.25rem;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: .3125rem;
+  cursor: pointer;
+}
+
+.articles-read-btn-share:hover,
+.articles-read-btn-continue:hover {
+  background-color: var(--button-hover-bg-color);
+}

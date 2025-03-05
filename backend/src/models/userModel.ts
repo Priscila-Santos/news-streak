@@ -6,7 +6,7 @@ dotenv.config();
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-});
+}); 
 
 interface User {
   id: number;
@@ -15,6 +15,7 @@ interface User {
   password: string;
   streak: number;
   last_read_date: Date; 
+  total_articles_read: number;
 }
 
 export const createUser = async (name: string, email: string, password: string): Promise<User> => {

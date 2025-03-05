@@ -47,7 +47,7 @@
 .days-of-week {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .day-circle {
@@ -58,7 +58,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 5px;
+  margin: 0 .3125rem;
   color: var(--accent-color);
 }
 
@@ -68,7 +68,7 @@
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
   border: none;
-  border-radius: 5px;
+  border-radius: .3125rem;
   cursor: pointer;
 }
 
