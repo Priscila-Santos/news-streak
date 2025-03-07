@@ -118,19 +118,3 @@ const getAdminDashboardData = (req, res) => __awaiter(void 0, void 0, void 0, fu
     }
 });
 exports.getAdminDashboardData = getAdminDashboardData;
-// export const getAdminDashboardData = async (req: Request, res: Response) => {
-//   try {
-//     const totalUsers = await pool.query('SELECT COUNT(*) FROM users');
-//     const totalArticlesRead = await pool.query('SELECT SUM(articles_read) FROM users');
-//     const topUsers = await pool.query(
-//       'SELECT name, streak, articles_read FROM users ORDER BY streak DESC, articles_read DESC LIMIT 10'
-//     );
-//     res.json({
-//       totalUsers: totalUsers.rows[0].count,
-//       totalArticlesRead: totalArticlesRead.rows[0].sum || 0,
-//       topUsers: topUsers.rows
-//     });
-//   } catch (error) {
-//     res.status(500).json({ message: 'Erro ao carregar dados do painel administrativo' });
-//   }
-// };

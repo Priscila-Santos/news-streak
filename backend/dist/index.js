@@ -12,9 +12,8 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
-// Configurar CORS para permitir requisições do frontend
 app.use((0, cors_1.default)({
-    origin: 'http://localhost:5173', // Substitua pela URL do frontend
+    origin: 'http://localhost:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));

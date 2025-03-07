@@ -44,6 +44,8 @@ export const findUserById = async (id: number): Promise<User | null> => {
 };
 
 // Função para atualizar o streak do usuário
+
+// Função para atualizar o streak do usuário
 export const updateUserStreak = async (userId: number): Promise<void> => {
   const result = await pool.query('SELECT last_read_date, streak FROM users WHERE id = $1', [userId]);
   const user = result.rows[0];
@@ -60,20 +62,47 @@ export const updateUserStreak = async (userId: number): Promise<void> => {
     return;
   }
 
-  // Verifique se hoje é domingo (0) ou a última leitura foi no sábado (6)
-  if (today.getDay() !== 0 && !(lastReadDate && lastReadDate.getDay() === 6 && today.getDay() === 1)) {
-    if (lastReadDate && lastReadDate.toDateString() === new Date(today.setDate(today.getDate() - 1)).toDateString()) {
-      await pool.query('UPDATE users SET streak = streak + 1, last_read_date = $1 WHERE id = $2', [new Date(), userId]);
-      console.log('Streak incremented for user:', userId); // Log para debug
-    } else {
-      await pool.query('UPDATE users SET streak = 1, last_read_date = $1 WHERE id = $2', [new Date(), userId]);
-      console.log('Streak reset for user:', userId); // Log para debug
-    }
+  // Se o artigo foi lido ontem, incremente o streak
+  if (lastReadDate && lastReadDate.toDateString() === new Date(today.setDate(today.getDate() - 1)).toDateString()) {
+    await pool.query('UPDATE users SET streak = streak + 1, last_read_date = $1 WHERE id = $2', [new Date(), userId]);
+    console.log('Streak incremented for user:', userId); // Log para debug
   } else {
-    await pool.query('UPDATE users SET last_read_date = $1 WHERE id = $2', [new Date(), userId]);
-    console.log('Last read date updated for user (no streak change):', userId); // Log para debug
+    // Caso contrário, reinicie o streak
+    await pool.query('UPDATE users SET streak = 1, last_read_date = $1 WHERE id = $2', [new Date(), userId]);
+    console.log('Streak reset for user:', userId); // Log para debug
   }
 };
+
+// export const updateUserStreak = async (userId: number): Promise<void> => {
+//   const result = await pool.query('SELECT last_read_date, streak FROM users WHERE id = $1', [userId]);
+//   const user = result.rows[0];
+//   const today = new Date();
+//   const lastReadDate = user.last_read_date ? new Date(user.last_read_date) : null;
+
+//   console.log('Updating streak for user:', user); // Log para debug
+//   console.log('Today:', today);
+//   console.log('Last read date:', lastReadDate);
+
+//   // Verifique se o artigo já foi lido hoje
+//   if (lastReadDate && lastReadDate.toDateString() === today.toDateString()) {
+//     console.log('Article already read today. No streak change.'); // Log para debug
+//     return;
+//   }
+
+//   // Verifique se hoje é domingo (0) ou a última leitura foi no sábado (6)
+//   if (today.getDay() !== 0 && !(lastReadDate && lastReadDate.getDay() === 6 && today.getDay() === 1)) {
+//     if (lastReadDate && lastReadDate.toDateString() === new Date(today.setDate(today.getDate() - 1)).toDateString()) {
+//       await pool.query('UPDATE users SET streak = streak + 1, last_read_date = $1 WHERE id = $2', [new Date(), userId]);
+//       console.log('Streak incremented for user:', userId); // Log para debug
+//     } else {
+//       await pool.query('UPDATE users SET streak = 1, last_read_date = $1 WHERE id = $2', [new Date(), userId]);
+//       console.log('Streak reset for user:', userId); // Log para debug
+//     }
+//   } else {
+//     await pool.query('UPDATE users SET last_read_date = $1 WHERE id = $2', [new Date(), userId]);
+//     console.log('Last read date updated for user (no streak change):', userId); // Log para debug
+//   }
+// };
 
 
 // Função para registrar a leitura de um artigo

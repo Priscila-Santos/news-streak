@@ -203,6 +203,7 @@ news-streak/
   ├── index.ts
   ├── package.json
   └── .env
+ ```
 
 ## Contribuições
 
