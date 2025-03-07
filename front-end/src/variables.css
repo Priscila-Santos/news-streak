@@ -3,11 +3,13 @@
     --secondary-color: #fff;
     --accent-color: #f09d51;
     --background-color: #f0f0f0;
+    --background-color-dark: #0D4715;
+    --background-color-orange: #C14600;
     --text-color: #333;
 
     --primary-font-family: 'Comic Neue', serif;
     --secondary-font-family: 'Roboto', serif
-    --font-size: 1rem; /* Tamanho base da fonte */
+    --font-size: 1.5rem; 
     --line-height: 1.5;
     --heading-font-size: 2rem;
     --button-bg-color: #f09d51;

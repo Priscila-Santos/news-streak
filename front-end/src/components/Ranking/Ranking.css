@@ -1,0 +1,53 @@
+@import '../../variables.css';
+
+.ranking-container {
+  background-color: var(--background-color);
+  padding: 1.25rem;
+  border-radius: .625rem;
+  box-shadow: 0 .25rem .5rem rgba(0, 0, 0, 0.1);
+  font-family: var(--primary-font-family);
+}
+
+.ranking-title {
+  font-size: var(--heading-font-size);
+  color: var(--primary-color);
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.ranking-list {
+  list-style: none;
+  padding: 0;
+}
+
+.ranking-list-element {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--secondary-color);
+  padding: .625rem;
+  margin-bottom: .625rem;
+  border-radius: .3125rem;
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.1);
+  font-size: var(--font-size);
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.ranking-list-element:nth-child(1) {
+  background-color: #ffd700; /* Ouro para o 1º lugar */
+}
+
+.ranking-list-element:nth-child(2) {
+  background-color: #c0c0c0; /* Prata para o 2º lugar */
+}
+
+.ranking-list-element:nth-child(3) {
+  background-color: #cd7f32; /* Bronze para o 3º lugar */
+}
+
+.ranking-paragraph {
+  font-size: var(--font-size);
+  color: var(--text-color);
+  text-align: center;
+}

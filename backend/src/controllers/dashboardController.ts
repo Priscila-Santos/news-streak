@@ -85,3 +85,39 @@ export const getDashboardData = async (req: AuthenticatedRequest, res: Response)
       res.status(500).json({ message: "Error fetching dashboard data" });
   }
 };
+
+// 🔹 Dados do painel administrativo
+export const getAdminDashboardData = async (req: Request, res: Response) => {
+  try {
+    // Buscar ranking dos usuários mais engajados
+    const rankingQuery = `
+      SELECT name, streak, total_articles_read AS "articlesRead"
+      FROM users
+      ORDER BY streak DESC, total_articles_read DESC
+      LIMIT 10;
+    `;
+    const rankingResult = await pool.query(rankingQuery);
+
+    // Buscar engajamento diário (quantidade de streaks e artigos lidos por dia)
+    const engagementQuery = `
+      SELECT 
+        DATE(last_read_date) AS date,
+        COUNT(*) AS streakDays,
+        SUM(total_articles_read) AS articlesRead
+      FROM users
+      WHERE last_read_date IS NOT NULL
+      GROUP BY date
+      ORDER BY date DESC
+      LIMIT 7;
+    `;
+    const engagementResult = await pool.query(engagementQuery);
+
+    res.status(200).json({
+      ranking: rankingResult.rows,
+      engagement: engagementResult.rows,
+    });
+  } catch (error) {
+    console.error("❌ Erro ao buscar métricas do dashboard:", error);
+    res.status(500).json({ message: "Erro ao buscar dados do dashboard." });
+  }
+};

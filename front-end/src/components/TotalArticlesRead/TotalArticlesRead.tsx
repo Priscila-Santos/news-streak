@@ -11,7 +11,7 @@ interface TotalArticlesReadProps {
 const TotalArticlesRead: React.FC<TotalArticlesReadProps> = ({ articlesRead: articlesRead }) => {
   return (
     <div className="articles-read-container">
-      {/* Ícone do mascote (substitua por uma imagem real) */}
+      {/* Ícone do mascote (substituir por uma imagem real) */}
       <div className="articles-read-conatiner-img">
         <img
           src={logo} 

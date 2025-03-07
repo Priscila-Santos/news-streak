@@ -20,9 +20,9 @@ dotenv_1.default.config();
 const pool = new pg_1.Pool({
     connectionString: process.env.DATABASE_URL,
 });
-const createUser = (name, email, password) => __awaiter(void 0, void 0, void 0, function* () {
+const createUser = (name_1, email_1, password_1, ...args_1) => __awaiter(void 0, [name_1, email_1, password_1, ...args_1], void 0, function* (name, email, password, role = 'user') {
     const hashedPassword = yield bcrypt_1.default.hash(password, 10);
-    const result = yield pool.query('INSERT INTO users (name, email, password, streak, last_read_date) VALUES ($1, $2, $3, $4, $5) RETURNING *', [name, email, hashedPassword, 0, new Date()]);
+    const result = yield pool.query('INSERT INTO users (name, email, password, streak, last_read_date, role) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *', [name, email, hashedPassword, 0, new Date(), role]);
     return result.rows[0];
 });
 exports.createUser = createUser;

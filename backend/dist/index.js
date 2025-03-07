@@ -22,6 +22,11 @@ app.use(express_1.default.json());
 app.use('/api', authRoutes_1.default);
 app.use('/api', dashboardRoutes_1.default);
 app.use('/api', articleRoutes_1.default);
+app._router.stack.forEach((r) => {
+    if (r.route && r.route.path) {
+        console.log(`🔹 Rota registrada: ${r.route.path}`);
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });

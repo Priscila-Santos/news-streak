@@ -16,13 +16,14 @@ interface User {
   streak: number;
   last_read_date: Date; 
   total_articles_read: number;
+  role: 'user' | 'admin'; 
 }
 
-export const createUser = async (name: string, email: string, password: string): Promise<User> => {
+export const createUser = async (name: string, email: string, password: string, role: 'user' | 'admin' = 'user'): Promise<User> => {
   const hashedPassword = await bcrypt.hash(password, 10);
   const result = await pool.query<User>(
-    'INSERT INTO users (name, email, password, streak, last_read_date) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-    [name, email, hashedPassword, 0, new Date()]
+    'INSERT INTO users (name, email, password, streak, last_read_date, role) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+    [name, email, hashedPassword, 0, new Date(), role]
   );
   return result.rows[0];
 };

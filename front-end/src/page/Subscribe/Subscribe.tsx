@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Subscribe.css';
 import logoSubscribe from '../../assets/img/logo.png';
+import Navbar from '../../components/Navbar/Navbar';
 
 const SubscribePage: React.FC = () => {
   const [name, setName] = useState('');
@@ -44,6 +45,8 @@ const SubscribePage: React.FC = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="subscribe-page">
       <div className="subscribe-form">
         <h1 className="subscribe-title">Let's Read!</h1>
@@ -107,6 +110,7 @@ const SubscribePage: React.FC = () => {
         <p className="subscribe-motto">You should, Read!</p>
       </div>
     </div>
+    </>
   );
 }
 

@@ -1,0 +1,28 @@
+@import "../../variables.css";
+
+.admin-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--primary-font-family);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.admin-dashboard-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.admin-dashboard-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 75rem; /* 1200px equivalente em rem */
+}
