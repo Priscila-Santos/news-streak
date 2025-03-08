@@ -6,6 +6,7 @@ import LoginModal from '../Login/Login';
 const Navbar = React.memo(() => {
     const [isLoginModalOpen, setLoginModalOpen] = useState(false);
     const [isLoggedIn, setLoggedIn] = useState(false);
+    const [isMenuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -28,16 +29,22 @@ const Navbar = React.memo(() => {
         setLoggedIn(true);
         setLoginModalOpen(false);
     }
-    console.log("📌 Navbar renderizado!");
+
+    const handleMenuToggle = () => {
+        setMenuOpen(!isMenuOpen);
+    }
 
     return (
         <nav className="navbar">
             <div className="navbar-left">
                 <img src={logoNavbar} alt="Logo" className="navbar-logo" />
                 <a href="/" className="navbar-title">News Streak</a>
+                <button className="navbar-toggle" onClick={handleMenuToggle}>
+                    ☰
+                </button>
             </div>
 
-            <div className="navbar-right">
+            <div className={`navbar-right ${isMenuOpen ? 'navbar-right-open' : ''}`}>
                 {isLoggedIn ? (
                     <>
                         <a href="/dashboard" className="navbar-link">Dashboard</a>

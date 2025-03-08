@@ -71,7 +71,7 @@ const SubscribePage: React.FC = () => {
           <input
             type="email"
             id="email"
-            placeholder="alex@email.com"
+            placeholder="john@email.com"
             className="subscribe-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}

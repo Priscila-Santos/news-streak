@@ -1,118 +1,170 @@
 @import '../../variables.css';
 
 .subscribe-page {
-  display: flex;
-  height: 100vh;
-  background-color: var(--background-color);
-  font-family: var(--primary-font-family);
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    background-color: var(--background-color);
+    font-family: var(--primary-font-family);
+    justify-content: center;
+    align-items: center;
 }
 
 .subscribe-form {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  background-color: var(--secondary-color);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: var(--secondary-color);
+    max-width: 30rem;
+    height: 100vh;
+    width: 100%;
+    box-shadow: 0 .25rem .625rem rgba(0, 0, 0, 0.1);
+    border-radius: .5rem;
 }
 
 .subscribe-title {
-  font-size: 2rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 .subscribe-tagline {
-  font-size: 1rem;
-  color: var(--text-color);
-  margin-bottom: 2rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 .subscribe-error {
-  color: red;
-  margin-bottom: .8rem;
+    color: red;
+    margin-bottom: 0.8rem;
 }
 
 .subscribe-success {
-  color: green;
-  margin-bottom: .8rem;
+    color: green;
+    margin-bottom: 0.8rem;
 }
 
+.subscribe-form form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 22rem;
+}
 
+/* Alinhando os rótulos acima dos campos */
 .subscribe-label {
-  font-size: 1rem;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-  align-self: flex-start;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    text-align: left;
+    width: 100%;
 }
 
 .subscribe-input {
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid var(--accent-color);
-  border-radius: 0.25rem;
-  margin-bottom: 1rem;
-  width: 100%;
-  max-width: 300px;
-  box-sizing: border-box;
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.subscribe-button {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+.subscribe-button:hover {
+    background-color: var(--button-hover-bg-color);
 }
 
 .subscribe-link {
-  color: var(--accent-color);
-  margin-bottom: 1rem;
-  text-decoration: none;
+    color: var(--accent-color);
+    margin-top: 1rem;
+    text-align: center;
+    text-decoration: none;
 }
 
 .subscribe-link:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
-.subscribe-button,
-.login-button {
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  margin-bottom: 1rem;
-  width: 100%;
-  max-width: 300px;
-  box-sizing: border-box;
-}
-
-.subscribe-button:hover,
-.login-button:hover {
-  background-color: var(--button-hover-bg-color);
-}
-
-.subscribe-divider {
-  margin: 1rem 0;
-  font-size: 1rem;
-  color: var(--text-color);
-}
-
+/* Estilo da imagem e do slogan */
 .subscribe-image {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
 }
 
 .subscribe-image img {
-  width: 80%;
-  max-width: 400px;
-  height: auto;
-  margin-bottom: 1rem;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    margin-bottom: 1rem;
 }
 
 .subscribe-motto {
-  font-size: 1.5rem;
-  color: var(--primary-color);
-  text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .subscribe-page {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .subscribe-form {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+
+    .subscribe-image {
+        padding: 1rem;
+    }
+
+    .subscribe-image img {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .subscribe-page {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .subscribe-form {
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .subscribe-image img {
+        max-width: 200px;
+    }
 }
